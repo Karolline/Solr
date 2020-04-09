@@ -20,8 +20,9 @@
 	p:driverClassName="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" p:url="jdbc:log4jdbc:mysql://localhost/board"
 	-->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
-		  p:driverClassName="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" p:url="jdbc:log4jdbc:mysql://localhost/board" 
-          p:username="root" p:password="root"
+		  p:driverClassName="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" p:url="jdbc:log4jdbc:mysql://localhost/board"
+		   // DB 패스워드 설정 
+          p:username="root" p:password="root" 
           p:initialSize="2"
           p:maxActive="30"
           p:maxIdle="10"

@@ -24,6 +24,7 @@
 	Class.forName("com.mysql.jdbc.Driver");
 	String url = "jdbc:mysql://localhost/board";
 	String id = "root"; 
+	 // DB 패스워드 설정
 	String pw = "root";
 	Connection conn=DriverManager.getConnection(url,id,pw);
 	Statement stmt=conn.createStatement();

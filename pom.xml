@@ -124,7 +124,7 @@
             <version>1.9.11</version>
         </dependency>
         
-        
+        <!-- solr 모듈 설치 -->
         <!-- https://mvnrepository.com/artifact/org.apache.solr/solr-solrj -->
 		<dependency>
 		    <groupId>org.apache.solr</groupId>

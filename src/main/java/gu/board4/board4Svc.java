@@ -44,6 +44,7 @@ public class board4Svc {
 	    		 sqlSession.insert("insertBoard4", param);
 	    	else sqlSession.update("updateBoard4", param);
 	    	
+	    	// Solr 색인 생성 
 	    	SolrInputDocument solrDoc = new SolrInputDocument();
 	    	solrDoc.addField("id", param.getBrdno());
 	    	solrDoc.addField("title", param.getBrdtitle());
