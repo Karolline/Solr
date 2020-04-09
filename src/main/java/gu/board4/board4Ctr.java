@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrDocumentList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import gu.common.FileUtil;
 import gu.common.FileVO;
 import gu.common.SearchVO;
+import gu.common.SolrJDriver;
 
 @Controller 
 public class board4Ctr {
@@ -86,4 +90,21 @@ public class board4Ctr {
         return "redirect:/board4List";
     }
 
+    @RequestMapping(value = "/board4Search")
+    public String boardSearch(HttpServletRequest request, ModelMap modelMap) throws Exception {
+      String q = request.getParameter("q");
+     
+      if(!"".equals(q)) {
+        SolrQuery query = new SolrQuery();
+        query.setQuery("board:" + q );
+     
+        QueryResponse responseSolr = SolrJDriver.solr.query(".", query);
+        SolrDocumentList results = responseSolr.getResults();
+     
+        modelMap.addAttribute("q", q);
+        modelMap.addAttribute("listview", results.toArray());
+      }
+     
+      return "board4/boardSearch";
+    }
 }
