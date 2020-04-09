@@ -85,6 +85,10 @@ public class board4Svc {
     
     public void deleteBoardOne(String param) throws Exception {
 		sqlSession.delete("deleteBoard4One", param);
+		
+		// 게시물 삭제시 색인도 삭제
+		SolrJDriver.solr.deleteById(param);
+		SolrJDriver.solr.commit();
     }
     
     public List<?> selectBoard4FileList(String param) throws Exception {
